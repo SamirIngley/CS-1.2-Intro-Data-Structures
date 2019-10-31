@@ -87,7 +87,7 @@ def stochastic_sampling(histogram): #random selection
     percent_histogram = {}
 
     total = len(histogram)
-    
+
     pick = random.randint(1, total)
 
     sum = 0
@@ -96,6 +96,7 @@ def stochastic_sampling(histogram): #random selection
         percent = histo_word[occurance]/total
         percent_histogram[histo_word] = percent
         sum += percent
+        if pick l
 
 
 
