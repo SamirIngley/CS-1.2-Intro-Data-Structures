@@ -1,4 +1,5 @@
 import re
+import random
 
 source_text = 'source.txt'
 
@@ -80,6 +81,27 @@ def frequency(search_word, source_text):
             histogram[word] = 1
 
     print (histogram.get(search_word, 0))
+
+def stochastic_sampling(histogram): #random selection
+
+    percent_histogram = {}
+
+    total = len(histogram)
+    
+    pick = random.randint(1, total)
+
+    sum = 0
+
+    for histo_word in histogram:
+        percent = histo_word[occurance]/total
+        percent_histogram[histo_word] = percent
+        sum += percent
+
+
+
+
+
+
 
 
 diction_histogram(source_text)
