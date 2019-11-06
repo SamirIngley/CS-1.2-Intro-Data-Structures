@@ -17,6 +17,7 @@ def list_histogram(source_text):
 
     for word in words:
         instance = [word, 0]
+        print(instance)
         for word2 in words:
             if word == word2:
                 instance[1] += 1
@@ -101,11 +102,6 @@ def stochastic_sampling(histogram): #random selection
         if pick < sum:
             chosen_one = histo_word
             return chosen_one
-
-
-
-
-
 
 
 
