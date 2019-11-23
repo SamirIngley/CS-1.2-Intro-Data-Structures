@@ -86,18 +86,24 @@ def frequency(search_word, source_text):
 def stochastic_sampling(histogram): #random selection
 
     percent_histogram = {}
+    # tokens = sum(histogram.values())
+    # word_probs = []
+    # cumulative = 0
+    # for word,freq in histogram.items():
+    #     word_probs.append((word, freq/tokens, cumulative))
+    #     cumulative += freq/tokens
 
-    total = len(histogram)
+    types = len(histogram)
 
-    pick = random.randint(1, total)
+    pick = random.randint(1, types)
 
     sum = 0
 
     chosen_one = None
 
     for histo_word in histogram:
-        percent = histo_word[occurance]/total
-        percent_histogram[histo_word] = percent
+        percent = histogram[histo_word]/total
+        #percent_histogram[histo_word] = percent
         sum += percent
         if pick < sum:
             chosen_one = histo_word
@@ -105,6 +111,9 @@ def stochastic_sampling(histogram): #random selection
 
 
 
-diction_histogram(source_text)
-unique_words(source_text)
-frequency(source_text)
+# diction_histogram(source_text)
+# unique_words(source_text)
+# frequency(source_text)
+list_histogram(source_text)
+move_histogram = list_histogram(source_text)
+stochastic_sampling(move_histogram)
