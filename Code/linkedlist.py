@@ -55,36 +55,76 @@ class LinkedList(object):
     def length(self):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(???) Why and under what conditions?"""
-
+        pos = self.head
+        total=0
+        while pos.next != None:
+            total+=1
+            pos = pos.next
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(1) Why and under what conditions?
+        """
         # TODO: Create new node to hold given item
-        new_node = node(data)
+        new_node = Node(item)
+        pos = self.head
+        while pos.next != None:
+            pos.tail = pos.next
+
+        pos.next = new_node
+        print(pos.item)
+
         # TODO: Append node after tail, if it exists
+
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(1) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
+        new_node = Node(item)
+        pos = self.head
+        while pos.next != None:
+            pos = pos.next
+        pos.next = new_node
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(1) Why and under what conditions?
+        TODO: Worst case running time: O(n) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
+        pos = node.head
+
+        if pos == node(data):
+            return pos
+
+        if index >= self.length():
+            print ("out of range")
+            return None
+        new_index = 0
+        pos = self.head
+        while True:
+            pos = pos.next
+            if new_index == index: return pos.data
+            new_index += 1
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(1) Why and under what conditions?
+        TODO: Worst case running time: O(n) Why and under what conditions?"""
         # TODO: Loop through all nodes to find one whose data matches given item
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
+        pos = node.head
+
+        new_index = 0
+        pos = self.head
+        while True:
+            pos = pos.next
+            if pos.next(data) == item:
+                pos
 
 
 def test_linked_list():
@@ -116,4 +156,8 @@ def test_linked_list():
 
 
 if __name__ == '__main__':
-    test_linked_list()
+    #test_linked_list()
+    item = (1,2,3,4)
+    hello = LinkedList()
+    hello.append(item)
+    print(hello.items)
