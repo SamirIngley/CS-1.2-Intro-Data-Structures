@@ -102,12 +102,13 @@ class LinkedList(object):
         if index >= self.length():
             print ("out of range")
             return None
-        new_index = 0
+
+        index = 0
         pos = self.head
         while True:
             pos = pos.next
-            if new_index == index: return pos.data
-            new_index += 1
+            if index == index: return pos.data
+            index += 1
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -117,14 +118,13 @@ class LinkedList(object):
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
-        pos = node.head
-
         new_index = 0
         pos = self.head
+
         while True:
-            pos = pos.next
-            if pos.next(data) == item:
-                pos
+            if pos.data == item:
+                if pos.next is None:
+                    pos = pos.next
 
 
 def test_linked_list():
