@@ -88,14 +88,13 @@ class HashTable(object):
         # TODO: Otherwise, raise error to tell user get failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
         found = False
+        item_key = _bucket_index(key)
         for bucket in self.buckets:
-            if key in bucket.items():
-                found = True
-                return key, value
-            else:
-                found = False
-                raise KeyError('Key not found: {}'.format(key))
-                return found
+            for index, value in bucket.items():
+                if item_key == index:
+                    return value 
+                else: 
+                    raise KeyError('Key not found: {}'.format(key))
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
@@ -106,9 +105,12 @@ class HashTable(object):
         # TODO: Otherwise, insert given key-value entry into bucket
         item_key = _bucket_index(key)
         for bucket in self.buckets:
-            if item_key in bucket.items():
-                self.data == value
-                return
+            for index in bucket.items():
+                if item_key == index:
+                    self.data == value
+                    return
+                else: 
+                    raise KeyError('Key not found: {}'.format(key))
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
@@ -120,9 +122,13 @@ class HashTable(object):
         # Hint: raise KeyError('Key not found: {}'.format(key))
         item_key = _bucket_index(key)
         for bucket in self.buckets:
-            if item_key in bucket.items():
-                self.data == None
-                return
+            for index in bucket.items():
+                if item_key == index:
+                    self.data == None
+                    return
+                else: 
+                    raise KeyError('Key not found: {}'.format(key))
+
 
 def test_hash_table():
     ht = HashTable()
