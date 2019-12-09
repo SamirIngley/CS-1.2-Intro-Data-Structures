@@ -43,6 +43,8 @@ class LinkedList(object):
         # Loop until node is None, which is one node too far past tail
         while node is not None:  # Always n iterations because no early return
             items.append(node.data)  # O(1) time (on average) to append to list
+            print(items)
+            print("node",node)
             # Skip to next node to advance forward in linked list
             node = node.next  # O(1) time to reassign variable
         # Now list contains items from all nodes
@@ -57,9 +59,10 @@ class LinkedList(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         pos = self.head
         total=0
-        while pos.next != None:
+        while pos != None:
             total+=1
             pos = pos.next
+        return total
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -67,12 +70,16 @@ class LinkedList(object):
         """
         # TODO: Create new node to hold given item
         new_node = Node(item)
-        pos = self.head
-        while pos.next != None:
-            pos.tail = pos.next
+        print(new_node)
 
+        if self.head == None:
+            self.head = new_node
+            self.tail = self.head
+            return
+            
+        pos = self.tail
         pos.next = new_node
-        print(pos.item)
+        self.tail = pos.next #self.tail.next, self.tail.new_node
 
         # TODO: Append node after tail, if it exists
 
@@ -83,10 +90,14 @@ class LinkedList(object):
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
         new_node = Node(item)
+
+        if self.head == None:
+            self.append(item)
+
         pos = self.head
-        while pos.next != None:
-            pos = pos.next
-        pos.next = new_node
+        new_node.next = pos
+        self.head = new_node
+        
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
@@ -157,7 +168,23 @@ def test_linked_list():
 
 if __name__ == '__main__':
     #test_linked_list()
-    item = (1,2,3,4)
-    hello = LinkedList()
-    hello.append(item)
-    print(hello.items)
+    print("test")
+    item = 4
+    ll = LinkedList()
+    ll.prepend(item)
+    print(ll.head.data)
+    print("head",ll.head)
+    print("tail",ll.tail)
+    ll.prepend(5)
+    print(ll.head.data)
+    print("head",ll.head)
+    print("tail",ll.tail)
+    #print(ll.tail.next)
+    print("final",ll.items())
+
+    node = ll.head
+    print("test")
+    while True:
+        print(node)
+        print(node.next)
+        node = node.next
