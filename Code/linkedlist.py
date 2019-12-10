@@ -93,6 +93,7 @@ class LinkedList(object):
 
         if self.head == None:
             self.append(item)
+            return
 
         pos = self.head
         new_node.next = pos
@@ -105,20 +106,16 @@ class LinkedList(object):
         TODO: Worst case running time: O(n) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
-        pos = node.head
-
-        if pos == node(data):
-            return pos
-
-        if index >= self.length():
-            print ("out of range")
-            return None
-
-        index = 0
         pos = self.head
+        index = 0
+
         while True:
+            if index >= self.length():
+                print ("out of range")
+                return None
+            elif quality(pos.data): 
+                return pos.data
             pos = pos.next
-            if index == index: return pos.data
             index += 1
 
     def delete(self, item):
@@ -131,7 +128,11 @@ class LinkedList(object):
         # Hint: raise ValueError('Item not found: {}'.format(item))
         new_index = 0
         pos = self.head
-
+        # loop to find matching item w data
+        # if found, prev node == matching.next
+        #
+        # if deleting first item, if deleting last item
+        
         while True:
             if pos.data == item:
                 if pos.next is None:
