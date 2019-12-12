@@ -1,7 +1,8 @@
 import re
 import random
 
-source_text = 'source.txt'
+source_text = 'one fish two fish red fish blue fish'.split(' ')
+
 
 def scrubbed_words(source_text):
     with open(source_text, 'r') as file:
